@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useContext } from 'react';
 import PropTypes from 'prop-types';
 import useSWR from 'swr';
 import 'highlight.js/styles/github.css';
@@ -6,6 +6,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Box, Grid, Typography, ListSubheader } from '@material-ui/core';
 import './telescope-post-content.css';
 import AdminButtons from '../AdminButtons';
+
+import { PostStateContext } from '../../contexts/Post/PostContext';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -79,6 +81,10 @@ const formatPublishedDate = (dateString) => {
 
 const Post = ({ postUrl }) => {
   const classes = useStyles();
+  //-------START ------------
+  const { top } = useContext(PostStateContext);
+  //-------END ------------
+
   // We need a ref to our post content, which we inject into a <section> below.
   const sectionEl = useRef(null);
   // Grab the post data from our backend so we can render it
@@ -108,7 +114,7 @@ const Post = ({ postUrl }) => {
         </Typography>
         <a href={post.url} rel="bookmark" className={classes.published}>
           <time className={classes.time} dateTime={post.updated}>
-            {` ${formatPublishedDate(post.updated)}`}
+            {` ${formatPublishedDate(post.updated)} ${top}`}
           </time>
         </a>
       </ListSubheader>

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'gatsby';
 import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Button, IconButton } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
+import { PostStateContext } from '../../contexts/Post/PostContext';
 
 import LogoIcon from '../LogoIcon';
 import Login from '../Login';
@@ -40,6 +41,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function DesktopHeader() {
   const classes = useStyles();
+  //-------------START-------
+  const { top } = useContext(PostStateContext);
+  //-------------END---------
   return (
     <>
       <AppBar position="sticky" className={classes.root}>
@@ -61,6 +65,11 @@ export default function DesktopHeader() {
           <Button color="inherit" size="medium" className={classes.button}>
             <Link to="/about" className={classes.links}>
               About
+            </Link>
+          </Button>
+          <Button color="inherit" size="medium" className={classes.button}>
+            <Link to="/" className={classes.links}>
+              {`${top}`}
             </Link>
           </Button>
           <Login />
