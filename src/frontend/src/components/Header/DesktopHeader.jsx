@@ -41,9 +41,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function DesktopHeader() {
   const classes = useStyles();
-  //-------------START-------
+  // -------------START-------
   const { top } = useContext(PostStateContext);
-  //-------------END---------
+  // -------------END---------
   return (
     <>
       <AppBar position="sticky" className={classes.root}>
@@ -65,11 +65,6 @@ export default function DesktopHeader() {
           <Button color="inherit" size="medium" className={classes.button}>
             <Link to="/about" className={classes.links}>
               About
-            </Link>
-          </Button>
-          <Button color="inherit" size="medium" className={classes.button}>
-            <Link to="/" className={classes.links}>
-              {`${top}`}
             </Link>
           </Button>
           <Login />

@@ -114,7 +114,7 @@ const Post = ({ postUrl }) => {
         </Typography>
         <a href={post.url} rel="bookmark" className={classes.published}>
           <time className={classes.time} dateTime={post.updated}>
-            {` ${formatPublishedDate(post.updated)} ${top}`}
+            {` ${formatPublishedDate(post.updated)}`}
           </time>
         </a>
       </ListSubheader>
